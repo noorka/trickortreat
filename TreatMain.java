@@ -141,29 +141,4 @@ public class TreatMain {
 		System.out.println("*                                                                                                                         *");
 		System.out.println("***************************************************************************************************************************");
 	}
-	public static void printNormalHouse(){
-		System.out.println("***************************************************************************************************************************");
-		System.out.println("*              /\\                                                                                                         *");
-		System.out.println("*  =====      /  \\                                                                                                        *");
-		System.out.println("* _|___|_____/ __ \\____________                                                                                           *");
-		System.out.println("*|::::::::::/ |  | \\:::::::::::|                                                                                          *");
-		System.out.println("*|:::::::::/  ====  \\::::::::::|                                                                                          *");
-		System.out.println("*|::::::::/__________\\:::::::::|                                                                                          *");
-		System.out.println("*|_________|  ____  |__________|                                                                                          *");
-		System.out.println("*  | ______ | / || \\ | _______ |                                                                                          *");
-		System.out.println("*  ||  |   || ====== ||   |   ||                                                                                          *");
-		System.out.println("*  ||--+---|| |    | ||---+---||                                                                                          *");
-		System.out.println("*  ||__|___|| |   o| ||___|___||                                                                                          *");
-		System.out.println("*  |========| |____| |=========|                                                                                          *");
-		System.out.println("* (^^-^^^^^-|________|-^^^--^^^)                                                                                          *");
-		System.out.println("* (,, , ,, ,/________\\,,,, ,, ,)                                                                                          *");
-		System.out.println("*','',,,,' /__________\\,,,',',;;                                                                                          *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("***************************************************************************************************************************");
-	}
 }
