@@ -65,7 +65,7 @@ public class User {
 			Scanner userInput = new Scanner(System.in);
 			System.out.println("Please choose a costume from our costume box!");
 			while(choice<0||choice>3){
-				System.out.println("[0] None\n[1] Princess \n[2] Superhero \n[3] Vampire");
+				System.out.println("[0] None\n[1] Princess \n[2] Vampire \n[3] Superhero");
 				choice = userInput.nextInt();
 			}
 			
@@ -78,10 +78,10 @@ public class User {
 				System.out.println("Here is your gown, your majesty.");
 			}
 			else if(choice==2){
-				System.out.println("Here is your cape, this town needs your help!");
+				System.out.println("Go forth, you creature of the night.");
 			}
 			else if(choice ==3){
-				System.out.println("Go forth, you creature of the night.");
+				System.out.println("Here is your cape, this town needs your help!");
 			}
 			else if(choice == 0){
 				System.out.println("Going as yourself I see.");
