@@ -9,7 +9,7 @@ import java.util.*;
 public class TreatMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
-		int candy = 0, cuteness =0 , scariness=0, response = 0;
+		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0;
 		int time = 150;
 		Random randTime = new Random ();
 		printAdjust();
@@ -23,18 +23,21 @@ public class TreatMain {
 			Princess costume = new Princess();
 			scariness = costume.getScary();
 			cuteness = costume.getCute();
+			speed = costume.getSpeed();
 			System.out.println("Here is your gown, your majesty.");
 		}
 		else if(choice==2){
 			Superhero costume = new Superhero();
 			scariness = costume.getScary();
 			cuteness = costume.getCute();
+			speed = costume.getSpeed();
 			System.out.println("Here is your cape, this town needs your help!");
 		}
 		else if(choice ==3){
 			Vampire costume = new Vampire();
 			scariness = costume.getScary();
 			cuteness = costume.getCute();
+			speed = costume.getSpeed();
 			System.out.println("Go forth, you creature of the night.");
 		}
 		
@@ -49,7 +52,7 @@ public class TreatMain {
 			if(response == 1) {
 				House newHouse = new House();
 				candy += newHouse.outputCandy(scariness,cuteness);
-				time -= houseTime;
+				time -= treatSpeed(houseTime, speed);
 			}
 			else if(response == 2) {
 				if(candy<2) {
@@ -106,6 +109,32 @@ public class TreatMain {
 		else{
 			System.out.println("You have "+ minLeft+" min left to trick or treat!");
 		}
+	}
+	public static int treatSpeed(int houseTime, int costumeSpeed){
+		int treatTime = 0;
+		
+		if(costumeSpeed <= 3){
+			treatTime = houseTime;
+		}
+		else if((costumeSpeed > 3) && (costumeSpeed <= 6)){
+			if(houseTime >= 2){
+			treatTime = houseTime - 1;
+			}
+			else{
+				treatTime = houseTime;
+			}
+		}
+		else{
+			if(houseTime >= 3){
+				treatTime = houseTime - 2;
+				}
+				else{
+					treatTime = houseTime;
+				}
+		}
+		
+		
+		return treatTime;
 	}
 	public static void printAdjust(){
 		Scanner mainInput = new Scanner(System.in);
