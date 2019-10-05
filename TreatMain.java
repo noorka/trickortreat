@@ -112,7 +112,7 @@ public class TreatMain {
 			System.out.println("You have 1 hr and "+ minLeft+" min left to trick or treat!");
 		}
 		else{
-			System.out.println("You have "+ minLeft+" min left to trick or treat!");
+			System.out.println("You have "+ timeLeft+" min left to trick or treat!");
 		}
 	}
 	public static int treatSpeed(int houseTime, int costumeSpeed){
