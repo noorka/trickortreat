@@ -61,7 +61,7 @@ public class User {
 	
 	// Get Costume Method
 		public void costumeBox() {
-			int choice = 0;
+			int choice = -1;
 			Scanner userInput = new Scanner(System.in);
 			System.out.println("Please choose a costume from our costume box!");
 			while(choice<0||choice>3){
