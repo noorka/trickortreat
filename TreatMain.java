@@ -19,7 +19,10 @@ public class TreatMain {
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
+		System.out.println("It is 8:30 pm, you should put on your costume.");
 		player.costumeBox();
+		int changeTime = costumeChangeTime(player.getCostume());
+		time-= changeTime;
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
@@ -73,19 +76,21 @@ public class TreatMain {
 		}
 		System.out.println("You end your night with "+candy+" candies.");
 	}
-	
-	
-	
-	// Get Costume Method
-	public static int costumeBox() {
-		int choice = 0;
-		Scanner userInput = new Scanner(System.in);
-		System.out.println("Please choose a costume from our costume box!");
-		while(choice<1||choice>3){
-			System.out.println("[1] Princess \n[2] Superhero \n[3] Vampire");
-			choice = userInput.nextInt();
+	public static int costumeChangeTime(int costumeChoice){
+		int changeTime = 0;
+		if(costumeChoice == 0){ // no costume
+			changeTime = 1;
 		}
-		return choice;
+		else if(costumeChoice == 1){ // princess
+			changeTime = 30;
+		}
+		else if(costumeChoice == 2){ // vampire
+			changeTime = 15;
+		}
+		else if(costumeChoice == 3){ // superhero
+			changeTime = 10;
+		}
+		return changeTime;
 	}
 	
 	public static int timeCheckAction(int actionTime, int timeLeft){
