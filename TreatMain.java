@@ -97,14 +97,14 @@ public class TreatMain {
 		int minLeft = 0;
 		if(timeLeft > 120){
 			minLeft = timeLeft - 120;
-			System.out.println("You have 2hrs and "+ minLeft+"min left to trick or treat!");
+			System.out.println("You have 2 hrs and "+ minLeft+" min left to trick or treat!");
 		}
 		else if(timeLeft > 60){
 			minLeft = timeLeft - 60;
-			System.out.println("You have 1hr and "+ minLeft+"min left to trick or treat!");
+			System.out.println("You have 1 hr and "+ minLeft+" min left to trick or treat!");
 		}
 		else{
-			System.out.println("You have "+ minLeft+"min left to trick or treat!");
+			System.out.println("You have "+ minLeft+" min left to trick or treat!");
 		}
 	}
 	public static void printAdjust(){
