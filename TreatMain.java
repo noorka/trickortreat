@@ -3,15 +3,15 @@
 //as well as tells them how much candy they have
 //If next house, randomized next house, with candy
 
-
+import java.util.Random;
 import java.util.*;
 
 public class TreatMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
 		int candy = 0, cuteness =0 , scariness=0, response = 0;
-
-	
+		int time = 150;
+		Random randTime = new Random ();
 		printAdjust();
 		printTitle();
 
@@ -38,14 +38,18 @@ public class TreatMain {
 			System.out.println("Go forth, you creature of the night.");
 		}
 		
-		while(true) {
+		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
 			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Go home.");
 			response = mainInput.nextInt();
+			int houseTime = randTime.nextInt(9) + 1;
+			
+			time = timeCheck(houseTime,time);
 			
 			if(response == 1) {
 				House newHouse = new House();
 				candy += newHouse.outputCandy(scariness,cuteness);
+				time -= houseTime;
 			}
 			else if(response == 2) {
 				if(candy<2) {
@@ -54,6 +58,7 @@ public class TreatMain {
 				else {
 					System.out.println("You have "+candy+" candies");
 				}
+				time--;
 			}
 			else if(response == 3) {
 				break;
@@ -74,6 +79,15 @@ public class TreatMain {
 			choice = userInput.nextInt();
 		}
 		return choice;
+	}
+	
+	public static int timeCheck(int actionTime, int timeLeft){
+		if(actionTime > timeLeft){
+			System.out.println("You don't have enough time! Go home!");
+			int doneTime = 0;
+			return doneTime;
+		}
+		return timeLeft;
 	}
 	public static void printAdjust(){
 		Scanner mainInput = new Scanner(System.in);
