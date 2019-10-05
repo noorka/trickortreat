@@ -13,13 +13,7 @@ public class TreatMain {
 		
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
 		int choice = costumeBox();
-		System.out.println("You chose: "+choice);
-		
-		//This will be inside a method once we have more costumes
-		//So we can make it less specific
-		Princess costume = new Princess();
-		scariness = costume.getScary();
-		cuteness = costume.getCute();
+		loadCostume(choice);
 		
 		while(true) {
 			System.out.println("\nWhat would you like to do next?");
@@ -57,5 +51,21 @@ public class TreatMain {
 			choice = userInput.nextInt();
 		}
 		return choice;
+	}
+	public static void loadCostume(int choice){
+		if(choice==1){
+			Princess costume = new Princess();
+			System.out.println("Here is your gown, your mejesty.");
+		}
+		else if(choice==2){
+			Superhero costume = new Superhero();
+			System.out.println("Here is your cape, this town needs your help!");
+		}
+		else if(choice ==3){
+			Vampire costume = new Vampire();
+			System.out.println("Go forth, you creature of the night.");
+		}
+		scariness = costume.getScary();
+		cuteness = costume.getCute();
 	}
 }
