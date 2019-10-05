@@ -149,6 +149,8 @@ public class House {
 	}
 	//Neutral House
 	public static void printNormalHouse(){
+		Random rand1 = new Random();
+		int houseNumber = rand1.nextInt((9999-1000)+1000);
 		// Art by Ric_Hotchkiss_sdrc_com at https://www.asciiart.eu/buildings-and-places/houses
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
@@ -165,12 +167,12 @@ public class House {
 		System.out.println("*  ||  |   || ====== ||   |   ||                                                                                          *");
 		System.out.println("*  ||--+---|| |    | ||---+---||                                                                                          *");
 		System.out.println("*  ||__|___|| |   o| ||___|___||        O                                                                                 *");
-		System.out.println("*  |========| |____| |=========|      \\/|\\                                                                                *");
-		System.out.println("* (^^-^^^^^-|________|-^^^--^^^)        | \\                                                                               *");
-		System.out.println("* (,, , ,, ,/________\\,,,, ,, ,)       / \\[]                                                                             *");
-		System.out.println("*','',,,,' /__________\\,,,',',;;      /   \\                                                                              *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
+		System.out.println("*  |========| |____| |=========|      \\/|\\       ______                                                                   *");
+		System.out.println("* (^^-^^^^^-|________|-^^^--^^^)        | \\     | "+houseNumber+" |                                                                  *");
+		System.out.println("* (,, , ,, ,/________\\,,,, ,, ,)       / \\[]    |NORMAL|                                                                  *");
+		System.out.println("*','',,,,' /__________\\,,,',',;;      /   \\     |_BLVD_|                                                                  *");
+		System.out.println("*                                                  ||                                                                     *");
+		System.out.println("*                                                ..||,.                                                                   *");
 		System.out.println("*                                                                                                                         *");
 		System.out.println("***************************************************************************************************************************");
 	}
