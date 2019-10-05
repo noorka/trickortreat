@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class User {
 	private Integer speed;
@@ -65,13 +65,29 @@ public class User {
 			Scanner userInput = new Scanner(System.in);
 			System.out.println("Please choose a costume from our costume box!");
 			while(choice<1||choice>3){
-				System.out.println("[1] Princess \n[2] Superhero \n[3] Vampire");
+				System.out.println("[0] None\n[1] Princess \n[2] Superhero \n[3] Vampire");
 				choice = userInput.nextInt();
 			}
 			
 			this.setCostume(choice);
+			int[][] myCostumes = getCostumeValues();
+			this.setSpeed(myCostumes[choice][0]);
+			this.setCute(myCostumes[choice][1]);
+			this.setScary(myCostumes[choice][2]);
+			if(choice==1){
+				System.out.println("Here is your gown, your majesty.");
+			}
+			else if(choice==2){
+				System.out.println("Here is your cape, this town needs your help!");
+			}
+			else if(choice ==3){
+				System.out.println("Go forth, you creature of the night.");
+			}
+			else if(choice == 0){
+				System.out.println("Going as yourself I see.");
+			}
 		}
-		public static int[] getCostumeValues(int choice){
+		public static int[][] getCostumeValues(){
 			int defaultAttributes []= new int[3];
 			defaultAttributes[0]=8;
 			defaultAttributes[1]=1;
@@ -93,7 +109,6 @@ public class User {
 			superheroAttributes[2]=1;
 
 			int[][] twoD_arr = {defaultAttributes, princessAttributes, vampireAttributes, superheroAttributes};
-			int[] returnArr = twoD_arr[choice];
+			return twoD_arr;
 		}
 }
-
