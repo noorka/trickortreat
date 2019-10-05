@@ -10,10 +10,33 @@ public class TreatMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
 		int candy = 0, cuteness =0 , scariness=0, response = 0;
-		
+
+	
+		printAdjust();
+		printTitle();
+
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
 		int choice = costumeBox();
-		loadCostume(choice);
+
+		//There should be a way to make this a method but I kept getting problems
+		if(choice==1){
+			Princess costume = new Princess();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			System.out.println("Here is your gown, your majesty.");
+		}
+		else if(choice==2){
+			Superhero costume = new Superhero();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			System.out.println("Here is your cape, this town needs your help!");
+		}
+		else if(choice ==3){
+			Vampire costume = new Vampire();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			System.out.println("Go forth, you creature of the night.");
+		}
 		
 		while(true) {
 			System.out.println("\nWhat would you like to do next?");
@@ -52,20 +75,95 @@ public class TreatMain {
 		}
 		return choice;
 	}
-	public static void loadCostume(int choice){
-		if(choice==1){
-			Princess costume = new Princess();
-			System.out.println("Here is your gown, your mejesty.");
+	public static void printAdjust(){
+		Scanner mainInput = new Scanner(System.in);
+		while(true){
+			System.out.println("***************************************************************************************************************************");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                 Welcome to our game!                                                    *");
+			System.out.println("*                Please adjust the width and height of your window so all the stars make an even box.                     *");
+			System.out.println("*                                                When satisfied, press 1                                                  *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("*                                                                                                                         *");
+			System.out.println("***************************************************************************************************************************");
+
+			int s1 = mainInput.nextInt();
+
+			if(s1==1){
+				break;
+			}
 		}
-		else if(choice==2){
-			Superhero costume = new Superhero();
-			System.out.println("Here is your cape, this town needs your help!");
-		}
-		else if(choice ==3){
-			Vampire costume = new Vampire();
-			System.out.println("Go forth, you creature of the night.");
-		}
-		scariness = costume.getScary();
-		cuteness = costume.getCute();
+	}
+	public static void printTitle(){
+		System.out.println("***************************************************************************************************************************");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                         ___________ _____ _____  _   __  ___________   ___________ _____  ___ _____                     *");
+		System.out.println("*                        |_   _| ___ \\_   _/  __ \\| | / / |  _  | ___ \\ |_   _| ___ \\  ___|/ _ \\_   _|                    *");
+		System.out.println("*                          | | | |_/ / | | | /  \\/| |/ /  | | | | |_/ /   | | | |_/ / |__ / /_\\ \\| |                      *");
+		System.out.println("*                          | | |    /  | | | |    |    \\  | | | |    /    | | |    /|  __||  _  || |                      *");
+		System.out.println("*                          | | | |\\ \\ _| |_| \\__/\\| |\\  \\ \\ \\_/ / |\\ \\    | | | |\\ \\| |___| | | || |                      *");
+		System.out.println("*                          \\_/ \\_| \\_|\\___/ \\____/\\_| \\_/  \\___/\\_| \\_|   \\_/ \\_| \\_\\____/\\_| |_/\\_/                      *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                         CONSOLE GAME                                                    *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("***************************************************************************************************************************");
+	}
+	public static void printNormalHouse(){
+		System.out.println("***************************************************************************************************************************");
+		System.out.println("*              /\\                                                                                                         *");
+		System.out.println("*  =====      /  \\                                                                                                        *");
+		System.out.println("* _|___|_____/ __ \\____________                                                                                           *");
+		System.out.println("*|::::::::::/ |  | \\:::::::::::|                                                                                          *");
+		System.out.println("*|:::::::::/  ====  \\::::::::::|                                                                                          *");
+		System.out.println("*|::::::::/__________\\:::::::::|                                                                                          *");
+		System.out.println("*|_________|  ____  |__________|                                                                                          *");
+		System.out.println("*  | ______ | / || \\ | _______ |                                                                                          *");
+		System.out.println("*  ||  |   || ====== ||   |   ||                                                                                          *");
+		System.out.println("*  ||--+---|| |    | ||---+---||                                                                                          *");
+		System.out.println("*  ||__|___|| |   o| ||___|___||                                                                                          *");
+		System.out.println("*  |========| |____| |=========|                                                                                          *");
+		System.out.println("* (^^-^^^^^-|________|-^^^--^^^)                                                                                          *");
+		System.out.println("* (,, , ,, ,/________\\,,,, ,, ,)                                                                                          *");
+		System.out.println("*','',,,,' /__________\\,,,',',;;                                                                                          *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("*                                                                                                                         *");
+		System.out.println("***************************************************************************************************************************");
 	}
 }
