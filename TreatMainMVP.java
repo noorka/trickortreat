@@ -186,7 +186,7 @@ public class TreatMainMVP {
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("***************************************************************************************************************************");
-
+			System.out.println("Resize screen to view instructions.");
 			int s1 = mainInput.nextInt();
 
 			if(s1==1){
