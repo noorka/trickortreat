@@ -58,7 +58,6 @@ public class TreatMainMVP {
 				House newHouse = new House();
 				candy += newHouse.outputCandy(scariness,cuteness);
 				time -= treatSpeed(houseTime, speed);
-				System.out.println(time);
 				}
 			}
 			else if(response == 2) {
@@ -74,7 +73,6 @@ public class TreatMainMVP {
 					System.out.println("You have "+candy+" candies");
 				}
 				time--;
-				System.out.println(time);
 				}
 			}
 			else if(response == 3) {
@@ -84,7 +82,6 @@ public class TreatMainMVP {
 				else{
 				time--;
 				timeCheck(time);
-				System.out.println(time);
 				}
 			}
 			else if(response == 4) {
