@@ -64,7 +64,7 @@ public class User {
 			int choice = 0;
 			Scanner userInput = new Scanner(System.in);
 			System.out.println("Please choose a costume from our costume box!");
-			while(choice<1||choice>3){
+			while(choice<0||choice>3){
 				System.out.println("[0] None\n[1] Princess \n[2] Superhero \n[3] Vampire");
 				choice = userInput.nextInt();
 			}
