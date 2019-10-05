@@ -9,6 +9,9 @@ import java.util.*;
 public class TreatMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
+		User player = new User();
+		
+		
 		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0;
 		int time = 150;
 		Random randTime = new Random ();
@@ -16,30 +19,7 @@ public class TreatMain {
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
-		int choice = costumeBox();
-
-		//There should be a way to make this a method but I kept getting problems
-		if(choice==1){
-			Princess costume = new Princess();
-			scariness = costume.getScary();
-			cuteness = costume.getCute();
-			speed = costume.getSpeed();
-			System.out.println("Here is your gown, your majesty.");
-		}
-		else if(choice==2){
-			Superhero costume = new Superhero();
-			scariness = costume.getScary();
-			cuteness = costume.getCute();
-			speed = costume.getSpeed();
-			System.out.println("Here is your cape, this town needs your help!");
-		}
-		else if(choice ==3){
-			Vampire costume = new Vampire();
-			scariness = costume.getScary();
-			cuteness = costume.getCute();
-			speed = costume.getSpeed();
-			System.out.println("Go forth, you creature of the night.");
-		}
+		player.costumeBox();
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
