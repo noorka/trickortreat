@@ -31,6 +31,8 @@ public class Vampire {
 	public Integer getSpeed() {
 		return speed;
 	}
-
+	public String toString(){
+		String costumeType = "Vampire";
+		return costumeType;
+	}
 }
-

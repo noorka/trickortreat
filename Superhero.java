@@ -31,6 +31,8 @@ public class Superhero {
 	public Integer getSpeed() {
 		return speed;
 	}
-
+	public String toString(){
+		String costumeType = "Superhero";
+		return costumeType;
+	}
 }
-
