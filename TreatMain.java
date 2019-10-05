@@ -50,11 +50,23 @@ public class TreatMain {
 			time = timeCheckAction(houseTime,time);
 			
 			if(response == 1) {
+				if(time <= 0){
+					break;
+				}
+				else{
+				
 				House newHouse = new House();
 				candy += newHouse.outputCandy(scariness,cuteness);
 				time -= treatSpeed(houseTime, speed);
+				System.out.println(time);
+				}
 			}
 			else if(response == 2) {
+				if(time <= 0){
+					break;
+				}
+				else{
+				
 				if(candy<2) {
 					System.out.println("You have no candy.");
 				}
@@ -62,10 +74,18 @@ public class TreatMain {
 					System.out.println("You have "+candy+" candies");
 				}
 				time--;
+				System.out.println(time);
+				}
 			}
 			else if(response == 3) {
+				if(time <= 0){
+					break;
+				}
+				else{
 				time--;
 				timeCheck(time);
+				System.out.println(time);
+				}
 			}
 			else if(response == 4) {
 				break;
