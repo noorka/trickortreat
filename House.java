@@ -90,6 +90,8 @@ public class House {
 
 	//Cute House
 	public static void printCuteHouse(){
+		Random rand1 = new Random();
+		int houseNumber = rand1.nextInt((9999-1000)+1000);
 		//Art by Igbeard at https://www.asciiart.eu/buildings-and-places/houses
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
@@ -108,17 +110,19 @@ public class House {
 		System.out.println("* /   (   \\       _..-'     |                                                                                             *");
 		System.out.println("* \\    `._/  _..-'    .--.  |                                                                                             *");
 		System.out.println("*  `-.....-'/  _ _  .'    '.|                                                                                             *");
-		System.out.println("*           | |_|_| |      | \\        O                                                                                   *");
-		System.out.println("*           | |_|_| |      | |      \\/|\\                                                                                  *");
-		System.out.println("*          /  ''''' |     o|  \\       | \\                                                                                 *");
-		System.out.println("*      :;  |        |      |  |/     / \\[]                                                                                *");
-		System.out.println("*       ;: `-.._    /__..--'\\.' ;:  /   \\                                                                                 *");
-		System.out.println("*           :;  `--' :;   :;                                                                                              *");
+		System.out.println("*           | |_|_| |      | \\        O           ______                                                                  *");
+		System.out.println("*           | |_|_| |      | |      \\/|\\         | "+houseNumber+" |                                                                 *");
+		System.out.println("*          /  ''''' |     o|  \\       | \\        | CUTE |                                                                 *");
+		System.out.println("*      :;  |        |      |  |/     / \\[]       |__CT__|                                                                 *");
+		System.out.println("*       ;: `-.._    /__..--'\\.' ;:  /   \\           ||                                                                    *");
+		System.out.println("*           :;  `--' :;   :;                 .,.   .||.,. .                                                               *");
 		System.out.println("*                                                                                                                         *");
 		System.out.println("***************************************************************************************************************************");
 	}
 	//Spooky House
 	public static void printSpookyHouse(){
+		Random rand1 = new Random();
+		int houseNumber = rand1.nextInt((9999-1000)+1000);
 		//Art by Igbeard at https://www.asciiart.eu/holiday-and-events/halloween
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
@@ -135,12 +139,12 @@ public class House {
 		System.out.println("*         _         /_____________\\ |\")| |  |  |/ |_| \\|                                                                  *");
 		System.out.println("*        (\")         |  __   __  |  '==' '=='  /_______\\       _                                                          *");
 		System.out.println("*       (' ')        | /  \\ /  \\ |   _______   |,^, ,^,|    (\")           O                                               *");
-		System.out.println("*        \\  \\        | |--| |--| |  ((--.--))  ||_| |_||   (' ')        \\/|\\                                              *");
-		System.out.println("*      _  ^^^ _      | |__| |(\"| |  ||  |  ||  |,-, ,-,|   /  /           | \\                                             *");
-		System.out.println("*    ,' ',  ,' ',    |           |  ||  |  ||  ||_| |_||   ^^^           / \\[]                                            *");
-		System.out.println("* .,,|RIP|,.|RIP|,.,,'==========='==''=='==''=='=======',,....,,,,.,... /   \\                                             *");
-		System.out.println("*                                                                                                                         *");
-		System.out.println("*                                                                                                                         *");
+		System.out.println("*        \\  \\        | |--| |--| |  ((--.--))  ||_| |_||   (' ')        \\/|\\         ______                               *");
+		System.out.println("*      _  ^^^ _      | |__| |(\"| |  ||  |  ||  |,-, ,-,|   /  /           | \\       | "+houseNumber+" |                              *");
+		System.out.println("*    ,' ',  ,' ',    |           |  ||  |  ||  ||_| |_||   ^^^           / \\[]      |SCARY |                              *");
+		System.out.println("* .,,|RIP|,.|RIP|,.,,'==========='==''=='==''=='=======',,....,,,,.,... /   \\       |__ST__|                              *");
+		System.out.println("*                                                                                      ||                                 *");
+		System.out.println("*                                                                                      ||                                 *");
 		System.out.println("***************************************************************************************************************************");
 	}
 	//Neutral House
