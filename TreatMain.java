@@ -40,11 +40,11 @@ public class TreatMain {
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
-			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Go home.");
+			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check time\n[4] Go home.");
 			response = mainInput.nextInt();
 			int houseTime = randTime.nextInt(9) + 1;
 			
-			time = timeCheck(houseTime,time);
+			time = timeCheckAction(houseTime,time);
 			
 			if(response == 1) {
 				House newHouse = new House();
@@ -61,6 +61,10 @@ public class TreatMain {
 				time--;
 			}
 			else if(response == 3) {
+				time--;
+				timeCheck(time);
+			}
+			else if(response == 4) {
 				break;
 			}
 		}
@@ -81,13 +85,27 @@ public class TreatMain {
 		return choice;
 	}
 	
-	public static int timeCheck(int actionTime, int timeLeft){
+	public static int timeCheckAction(int actionTime, int timeLeft){
 		if(actionTime > timeLeft){
 			System.out.println("You don't have enough time! Go home!");
 			int doneTime = 0;
 			return doneTime;
 		}
 		return timeLeft;
+	}
+	public static void timeCheck(int timeLeft){
+		int minLeft = 0;
+		if(timeLeft > 120){
+			minLeft = timeLeft - 120;
+			System.out.println("You have 2hrs and "+ minLeft+"min left to trick or treat!");
+		}
+		else if(timeLeft > 60){
+			minLeft = timeLeft - 60;
+			System.out.println("You have 1hr and "+ minLeft+"min left to trick or treat!");
+		}
+		else{
+			System.out.println("You have "+ minLeft+"min left to trick or treat!");
+		}
 	}
 	public static void printAdjust(){
 		Scanner mainInput = new Scanner(System.in);
