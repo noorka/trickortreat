@@ -53,6 +53,11 @@ public class User {
 		return costume;
 		
 	}
+	/*public String toString(){
+		String costumeType = "Princess";
+		return costumeType;
+	}
+	*/
 	
 	// Get Costume Method
 		public void costumeBox() {

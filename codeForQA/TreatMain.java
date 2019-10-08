@@ -3,6 +3,7 @@
 //as well as tells them how much candy they have
 //If next house, randomized next house, with candy
 
+import java.util.Random;
 import java.util.*;
 
 public class TreatMain {
@@ -75,8 +76,6 @@ public class TreatMain {
 		}
 		System.out.println("You end your night with "+candy+" candies.");
 	}
-
-	//MAIN METHODS
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
 		if(costumeChoice == 0){ // no costume

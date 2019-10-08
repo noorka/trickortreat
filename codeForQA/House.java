@@ -43,7 +43,7 @@ public class House {
 			System.out.println("BONG -*- BONG -*- BONG");
 			System.out.println("*creeeeeeeek*");
 			if(userScary <= 3){
-				System.out.println("\"You look ... interesting.\"");
+				System.out.println("\"You look ... cute.\"");
 				candy = 1;
 				System.out.println("+1 candy");
 			}
@@ -63,7 +63,7 @@ public class House {
 			printCuteHouse();
 			System.out.println("Ding a ling a ling-!");
 			if(userCute <= 3){
-				System.out.println("\"Goodness, what a costume.\"");
+				System.out.println("\"Goodness, you're scary.\"");
 				candy = 1;
 				System.out.println("+1 candy");
 			}
