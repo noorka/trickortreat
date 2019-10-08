@@ -11,7 +11,7 @@ public class TreatMain {
 		User player = new User();
 		
 		
-		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0;
+		int candy = 0, response = 0;
 		int time = 150;
 		Random randTime = new Random ();
 		printAdjust();
@@ -22,6 +22,7 @@ public class TreatMain {
 		player.costumeBox();
 		int changeTime = costumeChangeTime(player.getCostume());
 		time-= changeTime;
+
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
@@ -38,8 +39,8 @@ public class TreatMain {
 				else{
 				
 				House newHouse = new House();
-				candy += newHouse.outputCandy(scariness,cuteness);
-				time -= treatSpeed(houseTime, speed);
+				candy += newHouse.outputCandy(player.getScary(),player.getCute());
+				time -= treatSpeed(houseTime, player.getSpeed());
 				System.out.println(time);
 				}
 			}
@@ -74,6 +75,7 @@ public class TreatMain {
 			}
 		}
 		System.out.println("You end your night with "+candy+" candies.");
+		mainInput.close();
 	}
 
 	//MAIN METHODS
@@ -183,6 +185,8 @@ public class TreatMain {
 			catch(Exception e){
 				System.out.println("Incorrect input.  Please enter 1 when you have finished adjusting.");
 			}
+			
+			mainInput.close();
 		}
 	}
 	public static void printTitle(){
