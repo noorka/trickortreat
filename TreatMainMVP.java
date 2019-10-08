@@ -3,14 +3,12 @@
 //as well as tells them how much candy they have
 //If next house, randomized next house, with candy
 
+import java.util.Random;
 import java.util.*;
 
-public class TreatMain {
+public class TreatMainMVP {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
-		User player = new User();
-		
-		
 		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0;
 		int time = 150;
 		Random randTime = new Random ();
@@ -18,10 +16,30 @@ public class TreatMain {
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
-		System.out.println("It is 8:30 pm, you should put on your costume.");
-		player.costumeBox();
-		int changeTime = costumeChangeTime(player.getCostume());
-		time-= changeTime;
+		int choice = costumeBox();
+
+		//There should be a way to make this a method but I kept getting problems
+		if(choice==1){
+			Princess costume = new Princess();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			speed = costume.getSpeed();
+			System.out.println("Here is your gown, your majesty.");
+		}
+		else if(choice==2){
+			Superhero costume = new Superhero();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			speed = costume.getSpeed();
+			System.out.println("Here is your cape, this town needs your help!");
+		}
+		else if(choice ==3){
+			Vampire costume = new Vampire();
+			scariness = costume.getScary();
+			cuteness = costume.getCute();
+			speed = costume.getSpeed();
+			System.out.println("Go forth, you creature of the night.");
+		}
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
@@ -40,7 +58,6 @@ public class TreatMain {
 				House newHouse = new House();
 				candy += newHouse.outputCandy(scariness,cuteness);
 				time -= treatSpeed(houseTime, speed);
-				System.out.println(time);
 				}
 			}
 			else if(response == 2) {
@@ -49,14 +66,13 @@ public class TreatMain {
 				}
 				else{
 				
-				if(candy<2) {
+				if(candy<1) {
 					System.out.println("You have no candy.");
 				}
 				else {
 					System.out.println("You have "+candy+" candies");
 				}
 				time--;
-				System.out.println(time);
 				}
 			}
 			else if(response == 3) {
@@ -66,7 +82,6 @@ public class TreatMain {
 				else{
 				time--;
 				timeCheck(time);
-				System.out.println(time);
 				}
 			}
 			else if(response == 4) {
@@ -75,23 +90,19 @@ public class TreatMain {
 		}
 		System.out.println("You end your night with "+candy+" candies.");
 	}
-
-	//MAIN METHODS
-	public static int costumeChangeTime(int costumeChoice){
-		int changeTime = 0;
-		if(costumeChoice == 0){ // no costume
-			changeTime = 1;
+	
+	
+	
+	// Get Costume Method
+	public static int costumeBox() {
+		int choice = 0;
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Please choose a costume from our costume box!");
+		while(choice<1||choice>3){
+			System.out.println("[1] Princess \n[2] Superhero \n[3] Vampire");
+			choice = userInput.nextInt();
 		}
-		else if(costumeChoice == 1){ // princess
-			changeTime = 30;
-		}
-		else if(costumeChoice == 2){ // vampire
-			changeTime = 15;
-		}
-		else if(costumeChoice == 3){ // superhero
-			changeTime = 10;
-		}
-		return changeTime;
+		return choice;
 	}
 	
 	public static int timeCheckAction(int actionTime, int timeLeft){
@@ -143,6 +154,7 @@ public class TreatMain {
 		return treatTime;
 	}
 	public static void printAdjust(){
+		Scanner mainInput = new Scanner(System.in);
 		while(true){
 			System.out.println("***************************************************************************************************************************");
 			System.out.println("*                                                                                                                         *");
@@ -174,14 +186,11 @@ public class TreatMain {
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("***************************************************************************************************************************");
+			System.out.println("Resize screen to view instructions.");
+			int s1 = mainInput.nextInt();
 
-			Scanner mainInput = new Scanner(System.in);
-			try{
-				int s1 = mainInput.nextInt();
+			if(s1==1){
 				break;
-			}
-			catch(Exception e){
-				System.out.println("Incorrect input.  Please enter 1 when you have finished adjusting.");
 			}
 		}
 	}
