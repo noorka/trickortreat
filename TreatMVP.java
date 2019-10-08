@@ -5,7 +5,7 @@
 //Assignment: P1 - A Program I Wrote
 //Title: Trick or Treating Console Game v.1
 //Collaborators: Eliora Horst and Anna Kroon
-//QA Testers: Bill Horst and ? Kroon
+//QA Testers: Bill Horst and Tom Kroon
 
 //Pseudo Code
 //Greeting screen asks users to adjust screen to view game
