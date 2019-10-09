@@ -119,7 +119,7 @@ public class TreatMainMVP {
 					System.out.println("You have no candy.");
 				}
 				else {
-					System.out.println("You have "+candy+" candies");
+					System.out.println("You have "+candy+" candies.");
 				}
 				time--;
 				}
@@ -236,7 +236,7 @@ public class TreatMainMVP {
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                 Welcome to our game!                                                    *");
 			System.out.println("*                Please adjust the width and height of your window so all the stars make an even box.                     *");
-			System.out.println("*                                           When satisfied, press any number                                              *");
+			System.out.println("*                                           When satisfied, press any number.                                              *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
