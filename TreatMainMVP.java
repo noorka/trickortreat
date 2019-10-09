@@ -35,12 +35,22 @@ import java.util.*;
 public class TreatMainMVP {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
-		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0, adjustResponse=0;
+		int candy = 0, cuteness =0 , scariness=0, response = 0, speed = 0, adjustResponse = 0;
 		int time = 150;
 		Random randTime = new Random ();
 		System.out.println("Welcome to our game! Please get ready widen your viewing screen so that you can see our spooky graphics.");
 		System.out.println("When adjusted properly, you should have a rectangular window of asterisks around your console screen.");
 		System.out.println("Please press 1 when you are ready to view the graphics adjustment screen.");
+		
+		while(adjustResponse !=1){
+			Scanner adjustInput = new Scanner(System.in);
+			try{
+				adjustResponse = adjustInput.nextInt();
+			}
+			catch(Exception e){
+				System.out.println("Incorrect input.  Please enter 1 when you are ready.");
+			}
+		}
 
 		printAdjust();
 		printTitle();
@@ -88,7 +98,6 @@ public class TreatMainMVP {
 				System.out.println("Incorrect input.  Please enter a number between 1 and 4.");
 				continue;
 			}
-
 			//Generate random trick or treat time
 			int houseTime = randTime.nextInt(9) + 1;
 			//Check if user has enough time left for trick or treating at next house
@@ -119,7 +128,7 @@ public class TreatMainMVP {
 					System.out.println("You have no candy.");
 				}
 				else {
-					System.out.println("You have "+candy+" candies");
+					System.out.println("You have "+candy+" candies.");
 				}
 				time--;
 				}
@@ -236,7 +245,7 @@ public class TreatMainMVP {
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                 Welcome to our game!                                                    *");
 			System.out.println("*                Please adjust the width and height of your window so all the stars make an even box.                     *");
-			System.out.println("*                                           When satisfied, press any number                                              *");
+			System.out.println("*                                           When satisfied, press any number.                                             *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
@@ -262,7 +271,6 @@ public class TreatMainMVP {
 			catch(Exception e){
 				System.out.println("Incorrect input.  Please enter 1 when you have finished adjusting.");
 			}
-
 		}
 	}
 	//Print screen for title
