@@ -155,10 +155,10 @@ public class House {
 		return candy;
 	}
 
-	//Cute House
+	//Cute Houses
 	public static void printCuteHouse(){
 		Random rand1 = new Random();
-		int houseNumber = rand1.nextInt((9999-1000)+1000);
+		int houseNumber = rand1.nextInt(9999-1000) + 1000;
 		//Art by Igbeard at https://www.asciiart.eu/buildings-and-places/houses
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
@@ -189,7 +189,7 @@ public class House {
 	//Spooky House
 	public static void printSpookyHouse(){
 		Random rand1 = new Random();
-		int houseNumber = rand1.nextInt((9999-1000)+1000);
+		int houseNumber = rand1.nextInt(9999-1000)+1000;
 		//Art by Igbeard at https://www.asciiart.eu/holiday-and-events/halloween
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
@@ -217,7 +217,7 @@ public class House {
 	//Neutral House
 	public static void printNormalHouse(){
 		Random rand1 = new Random();
-		int houseNumber = rand1.nextInt((9999-1000)+1000);
+		int houseNumber = rand1.nextInt(9999-1000)+1000;
 		// Art by Ric_Hotchkiss_sdrc_com at https://www.asciiart.eu/buildings-and-places/houses
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
