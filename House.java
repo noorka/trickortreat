@@ -30,68 +30,25 @@ public class House {
 	}
 
 	public Integer trickAttempt(Integer userSpeed, Integer userTrick){
-		int trickScore = 0, trickLevel = 0;
+		int trickScore = 0, trickLevel = 0, trickFactor = 0;
 		Random rand1 = new Random();
+		trickLevel = rand1.nextInt(11);
 		
-		if(userSpeed < 3){
-			trickLevel = rand1.nextInt(11);
-			
-			if(trickLevel< userTrick){
-				System.out.println("Your trick was a success!");
-				System.out.println("+1");
-				trickScore = 1;
-			}
-			else if (trickLevel > userTrick){
-				System.out.println("Your trick failed.");
-				System.out.println("-1");
-				trickScore = -1;
-			}
-			else{
-				System.out.println("Your trick was lame.");
-				System.out.println("0");
-				trickScore = 0;
-			}
-			
-			
+		trickFactor = (userSpeed + userTrick) * 2;
+		
+		
+		if(trickFactor > trickLevel){
+			System.out.println("Trick success!");
+			trickScore = 1;
 		}
-		else if((userSpeed > 3) && (userSpeed <= 6)){
-			trickLevel = rand1.nextInt(7);
-			
-			if(trickLevel< userTrick){
-				System.out.println("Your trick was a success!");
-				System.out.println("+1");
-				trickScore = 1;
-			}
-			else if (trickLevel > userTrick){
-				System.out.println("Your trick failed.");
-				System.out.println("-1");
-				trickScore = -1;
-			}
-			else{
-				System.out.println("Your trick was lame.");
-				System.out.println("0");
-				trickScore = 0;
-			}
+		else if(trickFactor < trickLevel){
+			System.out.println("Trick fail.");
+			trickScore = -1;
 			
 		}
 		else{
-			trickLevel = rand1.nextInt(5);
-			
-			if(trickLevel< userTrick){
-				System.out.println("Your trick was a success!");
-				System.out.println("+1");
-				trickScore = 1;
-			}
-			else if (trickLevel > userTrick){
-				System.out.println("Your trick failed.");
-				System.out.println("-1");
-				trickScore = -1;
-			}
-			else{
-				System.out.println("Your trick was lame.");
-				System.out.println("0");
-				trickScore = 0;
-			}
+			System.out.println("Trick was lame...");
+			trickScore = 0;
 			
 		}
 		
