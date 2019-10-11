@@ -14,6 +14,7 @@ public class TrickMain {
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 		Random randTime = new Random ();
+		
 		printAdjust();
 		printTitle();
 
@@ -26,6 +27,11 @@ public class TrickMain {
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
+
+			// System.out.println(player.getScary());
+			// player.addScary(2);
+			// System.out.println(player.getScary());
+
 			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check trickster score\n[4] Check time\n[5] Go home.");
 			response = mainInput.nextInt();
 			int houseTime = randTime.nextInt(9) + 1;
@@ -92,7 +98,6 @@ public class TrickMain {
 			}
 		}
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
-		mainInput.close();
 	}
 
 	//MAIN METHODS
