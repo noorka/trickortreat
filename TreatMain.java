@@ -11,7 +11,7 @@ public class TreatMain {
 		User player = new User();
 		
 		
-		int candy = 0, response = 0;
+		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 		Random randTime = new Random ();
 		printAdjust();
@@ -26,7 +26,7 @@ public class TreatMain {
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
-			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check time\n[4] Go home.");
+			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check trickster score\n[4] Check time\n[5] Go home.");
 			response = mainInput.nextInt();
 			int houseTime = randTime.nextInt(9) + 1;
 			
@@ -37,11 +37,21 @@ public class TreatMain {
 					break;
 				}
 				else{
-				
-				House newHouse = new House();
-				candy += newHouse.outputCandy(player.getScary(),player.getCute());
-				time -= treatSpeed(houseTime, player.getSpeed());
-				System.out.println(time);
+					System.out.println("\nWould you like to trick or treat?");
+					System.out.println("[1] Trick\n[2] Treat");
+					response = mainInput.nextInt();
+					
+					if(response == 1){
+						House newHouse = new House();
+						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
+						time -= trickSpeed(houseTime, player.getSpeed());
+						
+					}
+					else if(response == 2){
+						House newHouse = new House();
+						candy += newHouse.outputCandy(player.getScary(),player.getCute());
+						time -= treatSpeed(houseTime, player.getSpeed());
+					}
 				}
 			}
 			else if(response == 2) {
@@ -50,14 +60,13 @@ public class TreatMain {
 				}
 				else{
 				
-				if(candy<2) {
+				if(candy<1) {
 					System.out.println("You have no candy.");
 				}
 				else {
-					System.out.println("You have "+candy+" candies");
+					System.out.println("You have "+candy+" candies.");
 				}
 				time--;
-				System.out.println(time);
 				}
 			}
 			else if(response == 3) {
@@ -65,16 +74,24 @@ public class TreatMain {
 					break;
 				}
 				else{
-				time--;
-				timeCheck(time);
-				System.out.println(time);
+				System.out.println("You're trickster score is "+ trickScore +".");
+				time -= 3;
 				}
 			}
 			else if(response == 4) {
+				if(time <= 0){
+					break;
+				}
+				else{
+				time--;
+				timeCheck(time);
+				}
+			}
+			else if(response == 5) {
 				break;
 			}
 		}
-		System.out.println("You end your night with "+candy+" candies.");
+		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
 		mainInput.close();
 	}
 
@@ -144,6 +161,32 @@ public class TreatMain {
 		
 		return treatTime;
 	}
+	public static int trickSpeed(int houseTime, int costumeSpeed){
+		int treatTime = 0;
+		
+		if(costumeSpeed <= 3){
+			treatTime = houseTime + 5;
+		}
+		else if((costumeSpeed > 3) && (costumeSpeed <= 6)){
+			if(houseTime >= 2){
+			treatTime = houseTime + 3;
+			}
+			else{
+				treatTime = houseTime + 5;
+			}
+		}
+		else{
+			if(houseTime >= 3){
+				treatTime = houseTime + 1;
+				}
+				else{
+					treatTime = houseTime + 5;
+				}
+		}
+		
+		
+		return treatTime;
+	}
 	public static void printAdjust(){
 		while(true){
 			System.out.println("***************************************************************************************************************************");
@@ -159,7 +202,7 @@ public class TreatMain {
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                 Welcome to our game!                                                    *");
 			System.out.println("*                Please adjust the width and height of your window so all the stars make an even box.                     *");
-			System.out.println("*                                                When satisfied, press 1                                                  *");
+			System.out.println("*                                           When satisfied, press any number                                              *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
 			System.out.println("*                                                                                                                         *");
@@ -186,7 +229,6 @@ public class TreatMain {
 				System.out.println("Incorrect input.  Please enter 1 when you have finished adjusting.");
 			}
 			
-			mainInput.close();
 		}
 	}
 	public static void printTitle(){
