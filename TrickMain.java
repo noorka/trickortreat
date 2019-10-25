@@ -9,12 +9,12 @@ public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
 		User player = new User();
+		Neighborhood currentHood = new Neighborhood(1);
 		
 		
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 		Random randTime = new Random ();
-		
 		printAdjust();
 		printTitle();
 
@@ -23,15 +23,12 @@ public class TrickMain {
 		player.costumeBox();
 		int changeTime = costumeChangeTime(player.getCostume());
 		time-= changeTime;
-
+		
+		int travelTime = neighborhoodSelect(currentHood);
+		time -= travelTime;
 		
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
-
-			// System.out.println(player.getScary());
-			// player.addScary(2);
-			// System.out.println(player.getScary());
-
 			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check trickster score\n[4] Check time\n[5] Go home.");
 			response = mainInput.nextInt();
 			int houseTime = randTime.nextInt(9) + 1;
@@ -98,9 +95,42 @@ public class TrickMain {
 			}
 		}
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
-	}
+		}
 
 	//MAIN METHODS
+
+	public static int neighborhoodSelect(Object object){
+		System.out.println("What neighborhood do you want to visit?");
+		System.out.println("[1] My neighboor hood\n[2] The fancier neighboorhood\n[3] The fanciest neighborhood\n");
+		//Date otherDate = (Date) object;
+		Neighborhood chosenOne = (Neighborhood) object;
+		boolean goodChoice = false;
+		int travelingTime = 0;
+		while(goodChoice = false){
+			Scanner s = new Scanner(System.in);
+			int hoodChoice = s.nextInt();
+			if(hoodChoice == 1){
+				chosenOne = new Neighborhood(1);
+				travelingTime = chosenOne.travelTime(1);
+				goodChoice = true;
+			}
+			else if(hoodChoice == 2){
+				chosenOne = new Neighborhood(2);
+				travelingTime = chosenOne.travelTime(2);
+				goodChoice = true;
+			}
+			else if(hoodChoice == 3){
+				chosenOne = new Neighborhood(3);
+				travelingTime = chosenOne.travelTime(3);
+				goodChoice = true;
+			}
+			else{
+				goodChoice = false;
+			}
+		}
+		return travelingTime;
+	}
+
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
 		if(costumeChoice == 0){ // no costume
