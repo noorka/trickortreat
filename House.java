@@ -4,14 +4,20 @@ import java.util.Random;
 public class House {
 	private Integer cute;
 	private Integer scary;
+	private Integer trick;
 
 	// We don't need a constructor with parameters any more,
 	// Since the random house is made inside the method here
 	
-//	public House(Integer cuteFactor, Integer scaryFactor) {
-//		this.setCute(cuteFactor);
-//		this.setScary(scaryFactor);
-//	}
+	public House() {
+		Random rand1 = new Random();
+		Random rand2 = new Random();
+		Random rand3 = new Random(); 
+		
+		this.setCute(rand3.nextInt(11));
+		this.setScary(rand2.nextInt(11));
+		this.setTrick(rand1.nextInt(11));
+	}
 	
 	//Cute Value of House
 	private void setCute(int i) {
@@ -29,10 +35,9 @@ public class House {
 		return scary;	
 	}
 
-	public Integer trickAttempt(Integer userSpeed, Integer userTrick){
+	public Integer trickAttempt(Integer userSpeed, Integer userTrick, House thisHouse){
 		int trickScore = 0, trickLevel = 0, trickFactor = 0;
-		Random rand1 = new Random();
-		trickLevel = rand1.nextInt(11);
+		trickLevel = thisHouse.getTrick();
 		
 		trickFactor = (userSpeed + userTrick) * 2;
 		
@@ -54,15 +59,12 @@ public class House {
 		
 		return trickScore; 
 	}
-	public Integer outputCandy(Integer userScary, Integer userCute ){
+	public Integer outputCandy(Integer userScary, Integer userCute, House thisHouse){
 		int candy = 0;
+		int thisCute = thisHouse.getCute();
+		int thisScary = thisHouse.getScary();
 		
-		Random rand1 = new Random();
-		Random rand2 = new Random();
-		cute = rand1.nextInt(11);
-		scary = rand2.nextInt(11);
-		
-		if(scary > cute){ // scary house
+		if(thisScary > thisCute){ // scary house
 			printSpookyHouse();
 			System.out.println("BONG -*- BONG -*- BONG");
 			System.out.println("*creeeeeeeek*");
@@ -83,7 +85,7 @@ public class House {
 			}
 		
 		}
-		else if (cute > scary){ // cute house
+		else if (thisCute > thisScary){ // cute house
 			printCuteHouse();
 			System.out.println("Ding a ling a ling-!");
 			if(userCute <= 3){
@@ -199,5 +201,13 @@ public class House {
 		System.out.println("*                                                ..||,.                                                                   *");
 		System.out.println("*                                                                                                                         *");
 		System.out.println("***************************************************************************************************************************");
+	}
+
+	public Integer getTrick() {
+		return trick;
+	}
+
+	public void setTrick(Integer trick) {
+		this.trick = trick;
 	}
 }
