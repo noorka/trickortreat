@@ -9,30 +9,41 @@ public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
 		User player = new User();
+
+		//Add New Neightborhood
 		Neighborhood currentHood = new Neighborhood(1);
 		
 		
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
+
+		//Maybe dulplicate code in House
 		Random randTime = new Random ();
 		printAdjust();
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
 		System.out.println("It is 8:30 pm, you should put on your costume.");
+		//Player chooses a costume out of three options
 		player.costumeBox();
+
+		//How long it takes to put on each costume
 		int changeTime = costumeChangeTime(player.getCostume());
 		time-= changeTime;
 		
+		//Time to travel to neighborhood
 		int travelTime = neighborhoodSelect(currentHood);
 		time -= travelTime;
 		
+		//Trick or Treat Loop
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
 			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check trickster score\n[4] Check time\n[5] Go home.");
 			response = mainInput.nextInt();
+
+			//How long it takes to travel to the next house
 			int houseTime = randTime.nextInt(9) + 1;
-			
+			//Check if there is enough time left to perform action
 			time = timeCheckAction(houseTime,time);
 			
 			if(response == 1) {

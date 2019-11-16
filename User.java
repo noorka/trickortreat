@@ -107,6 +107,11 @@ public class User {
 			}
 		}
 		public static int[][] getCostumeValues(){
+			//[0] = Speed
+			//[1] = Cuteness
+			//[2] = Scariness
+			//[3] = Movement
+			
 			int defaultAttributes []= new int[4];
 			defaultAttributes[0]=8;
 			defaultAttributes[1]=1;
