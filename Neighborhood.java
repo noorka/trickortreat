@@ -11,7 +11,6 @@ public class Neighborhood {
 		int number;
 		Random rand1 = new Random();
 		//Array to hold all houses in neighborhood
-		House [] myHouses = null;
 		
 		if(fancy == 1){
 			number = rand1.nextInt(40-10) + 10;
@@ -23,8 +22,8 @@ public class Neighborhood {
 			number = rand1.nextInt(60-30) + 30;
 		}
 		//ArrayList thisHood = new ArrayList(number);
-		
-		for(int i = 0; i <= number; i++){
+		House[] myHouses = new House[number];
+		for(int i = 0; i < number; i++){
 			House newHouse = new House(fancy);
 			myHouses[i]= newHouse;
 		}

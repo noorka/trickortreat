@@ -29,7 +29,7 @@ public class TrickMain {
 		
 		//Add New Neighborhood
 		boolean goodChoice = false;
-		Neighborhood currentHood = null;
+		Neighborhood currentHood = new Neighborhood(1);
 		do{
 			System.out.println("What neighborhood do you want to visit?");
 			System.out.println("[1] My neighborhood\n[2] The fancier neighborhood\n[3] The fanciest neighborhood\n");
@@ -72,13 +72,21 @@ public class TrickMain {
 					
 					if(response == 1){
 						House newHouse = currentHood.nextHouse();
-						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore, newHouse);
+						if(newHouse == null){
+							System.out.println("There are no more houses in this neighborhood.");
+							break;
+						}
+						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
 						time -= trickSpeed(houseTime, player.getSpeed());
 						
 					}
 					else if(response == 2){
 						House newHouse = currentHood.nextHouse();
-						candy += newHouse.outputCandy(player.getScary(),player.getCute(), newHouse);
+						if(newHouse == null){
+							System.out.println("There are no more houses in this neighborhood.");
+							break;
+						}
+						candy += newHouse.outputCandy(player.getScary(),player.getCute());
 						time -= treatSpeed(houseTime, player.getSpeed());
 					}
 				}

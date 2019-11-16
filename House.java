@@ -13,12 +13,16 @@ public class House {
 	
 	public House() {
 		Random rand1 = new Random();
-		Random rand2 = new Random();
-		Random rand3 = new Random(); 
+		//Random rand2 = new Random();
+		//Random rand3 = new Random(); 
 		
-		this.setCute(rand3.nextInt(11));
-		this.setScary(rand2.nextInt(11));
+		//this.setCute(rand1.nextInt(11));
+		//this.setScary(rand1.nextInt(11));
+		//this.setTrick(rand1.nextInt(11));
+		this.setCute(5);
+		this.setScary(5);
 		this.setTrick(rand1.nextInt(11));
+		
 		this.setHasBeenVisited(false);
 		this.fancyCandy = 0;
 	}
@@ -27,8 +31,8 @@ public class House {
 		Random rand2 = new Random();
 		Random rand3 = new Random(); 
 		
-		this.setCute(rand3.nextInt(11));
-		this.setScary(rand2.nextInt(11));
+		this.setCute(5);
+		this.setScary(5);
 		this.setTrick(rand1.nextInt(11));
 		this.setHasBeenVisited(false);
 		this.fancyCandy = neighborhoodFanciness;
@@ -49,13 +53,13 @@ public class House {
 	public Integer getScary() {
 		return scary;	
 	}
-	public Integer setFancyCandy(int fanciness){
+	public void setFancyCandy(int fanciness){
 		fancyCandy = fanciness;
 	}
 
-	public Integer trickAttempt(Integer userSpeed, Integer userTrick, House thisHouse){
+	public Integer trickAttempt(Integer userSpeed, Integer userTrick){
 		int trickScore = 0, trickLevel = 0, trickFactor = 0;
-		trickLevel = thisHouse.getTrick();
+		trickLevel = this.getTrick();
 		
 		trickFactor = (userSpeed + userTrick) * 2;
 		
@@ -77,10 +81,10 @@ public class House {
 		
 		return trickScore; 
 	}
-	public Integer outputCandy(Integer userScary, Integer userCute, House thisHouse){
+	public Integer outputCandy(Integer userScary, Integer userCute){
 		int candy = 0;
-		int thisCute = thisHouse.getCute();
-		int thisScary = thisHouse.getScary();
+		int thisCute = this.getCute();
+		int thisScary = this.getScary();
 		
 		if(thisScary > thisCute){ // scary house
 			printSpookyHouse();
