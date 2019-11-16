@@ -7,8 +7,10 @@ public class Neighborhood {
 	private House[] currentHood;
 
 	public Neighborhood(int fancy){
+		//Number of houses in neighborhood
 		int number;
 		Random rand1 = new Random();
+		//Array to hold all houses in neighborhood
 		House [] myHouses = null;
 		
 		if(fancy == 1){
@@ -23,16 +25,17 @@ public class Neighborhood {
 		//ArrayList thisHood = new ArrayList(number);
 		
 		for(int i = 0; i <= number; i++){
-			House newHouse = new House();
+			House newHouse = new House(fancy);
 			myHouses[i]= newHouse;
 		}
+
 		this.currentHood = myHouses;
 		this.fanciness = fancy;
 		this.numberOfHouses = number;
 	}
 	
 	public void beenToHouse(int houseNum){
-		currentHood[houseNum].setHasBeenVisited(true);;
+		currentHood[houseNum].setHasBeenVisited(true);
 	}
 	
 	public int travelTime(int fancy){

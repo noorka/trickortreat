@@ -6,6 +6,7 @@ public class House {
 	private Integer scary;
 	private Integer trick;
 	private boolean hasBeenVisited;
+	private Integer fancyCandy;
 
 	// We don't need a constructor with parameters any more,
 	// Since the random house is made inside the method here
@@ -19,6 +20,18 @@ public class House {
 		this.setScary(rand2.nextInt(11));
 		this.setTrick(rand1.nextInt(11));
 		this.setHasBeenVisited(false);
+		this.fancyCandy = 0;
+	}
+	public House (int neighborhoodFanciness){
+		Random rand1 = new Random();
+		Random rand2 = new Random();
+		Random rand3 = new Random(); 
+		
+		this.setCute(rand3.nextInt(11));
+		this.setScary(rand2.nextInt(11));
+		this.setTrick(rand1.nextInt(11));
+		this.setHasBeenVisited(false);
+		this.fancyCandy = neighborhoodFanciness;
 	}
 	
 	//Cute Value of House
@@ -35,6 +48,9 @@ public class House {
 	}
 	public Integer getScary() {
 		return scary;	
+	}
+	public Integer setFancyCandy(int fanciness){
+		fancyCandy = fanciness;
 	}
 
 	public Integer trickAttempt(Integer userSpeed, Integer userTrick, House thisHouse){
@@ -72,17 +88,17 @@ public class House {
 			System.out.println("*creeeeeeeek*");
 			if(userScary <= 3){
 				System.out.println("\"You look ... interesting.\"");
-				candy = 1;
+				candy = 1*fancyCandy;
 				System.out.println("+1 candy");
 			}
 			else if((userScary > 3) && (userScary <= 6)){
 				System.out.println("\"Nice costume.\"");
-				candy = 2;
+				candy = 2*fancyCandy;
 				System.out.println("+2 candy");
 			}
 			else{
 				System.out.println("\"Spooktacular costume!\"");
-				candy = 3;
+				candy = 3*fancyCandy;
 				System.out.println("+3 candy");
 			}
 		
