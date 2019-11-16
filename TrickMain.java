@@ -9,11 +9,7 @@ public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
 		User player = new User();
-
-		//Add New Neightborhood
-		Neighborhood currentHood = new Neighborhood(1);
-		
-		
+			
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 
@@ -31,9 +27,27 @@ public class TrickMain {
 		int changeTime = costumeChangeTime(player.getCostume());
 		time-= changeTime;
 		
-		//Time to travel to neighborhood
-		int travelTime = neighborhoodSelect(currentHood);
-		time -= travelTime;
+		//Add New Neighborhood
+		boolean goodChoice = false;
+		do{
+			System.out.println("What neighborhood do you want to visit?");
+			System.out.println("[1] My neighborhood\n[2] The fancier neighborhood\n[3] The fanciest neighborhood\n");
+			Scanner s = new Scanner(System.in);
+			int hoodChoice = s.nextInt();
+			if((hoodChoice < 4) && (hoodChoice > 0)){
+				
+				Neighborhood currentHood = new Neighborhood(hoodChoice);
+				time -= currentHood.travelTime(hoodChoice);
+				
+				goodChoice = true;
+				
+			}
+			else{
+				goodChoice = false;
+			}
+		}
+		while(goodChoice = false);
+		
 		
 		//Trick or Treat Loop
 		while(time != 0) {
@@ -109,38 +123,6 @@ public class TrickMain {
 		}
 
 	//MAIN METHODS
-
-	public static int neighborhoodSelect(Object object){
-		System.out.println("What neighborhood do you want to visit?");
-		System.out.println("[1] My neighboor hood\n[2] The fancier neighboorhood\n[3] The fanciest neighborhood\n");
-		//Date otherDate = (Date) object;
-		Neighborhood chosenOne = (Neighborhood) object;
-		boolean goodChoice = false;
-		int travelingTime = 0;
-		while(goodChoice = false){
-			Scanner s = new Scanner(System.in);
-			int hoodChoice = s.nextInt();
-			if(hoodChoice == 1){
-				chosenOne = new Neighborhood(1);
-				travelingTime = chosenOne.travelTime(1);
-				goodChoice = true;
-			}
-			else if(hoodChoice == 2){
-				chosenOne = new Neighborhood(2);
-				travelingTime = chosenOne.travelTime(2);
-				goodChoice = true;
-			}
-			else if(hoodChoice == 3){
-				chosenOne = new Neighborhood(3);
-				travelingTime = chosenOne.travelTime(3);
-				goodChoice = true;
-			}
-			else{
-				goodChoice = false;
-			}
-		}
-		return travelingTime;
-	}
 
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;

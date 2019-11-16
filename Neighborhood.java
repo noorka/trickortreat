@@ -1,16 +1,15 @@
 import java.util.*;
-import java.util.Random;
 
 public class Neighborhood {
 	
 	private int numberOfHouses;
 	private int fanciness;
-	private int[][] currentHood;
+	private House[] currentHood;
 
 	public Neighborhood(int fancy){
 		int number;
 		Random rand1 = new Random();
-		int[][] myHouses = null;
+		House [] myHouses = null;
 		
 		if(fancy == 1){
 			number = rand1.nextInt(40-10) + 10;
@@ -24,7 +23,8 @@ public class Neighborhood {
 		//ArrayList thisHood = new ArrayList(number);
 		
 		for(int i = 0; i <= number; i++){
-			myHouses[i][0] = 0;
+			House newHouse = new House();
+			myHouses[i]= newHouse;
 		}
 		this.currentHood = myHouses;
 		this.fanciness = fancy;
@@ -32,7 +32,7 @@ public class Neighborhood {
 	}
 	
 	public void beenToHouse(int houseNum){
-		currentHood[houseNum][0]=1;
+		currentHood[houseNum].setHasBeenVisited(true);;
 	}
 	
 	public int travelTime(int fancy){

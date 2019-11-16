@@ -5,6 +5,7 @@ public class House {
 	private Integer cute;
 	private Integer scary;
 	private Integer trick;
+	private boolean hasBeenVisited;
 
 	// We don't need a constructor with parameters any more,
 	// Since the random house is made inside the method here
@@ -17,6 +18,7 @@ public class House {
 		this.setCute(rand3.nextInt(11));
 		this.setScary(rand2.nextInt(11));
 		this.setTrick(rand1.nextInt(11));
+		this.setHasBeenVisited(false);
 	}
 	
 	//Cute Value of House
@@ -210,4 +212,12 @@ public class House {
 	public void setTrick(Integer trick) {
 		this.trick = trick;
 	}
+	public boolean getHasBeenVisited() {
+		return hasBeenVisited;
+	}
+
+	public void setHasBeenVisited(boolean visit) {
+		this.hasBeenVisited = visit;
+	}
+	
 }
