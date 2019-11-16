@@ -77,6 +77,7 @@ public class TrickMain {
 							break;
 						}
 						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
+						newHouse.setHasBeenVisited(true);
 						time -= trickSpeed(houseTime, player.getSpeed());
 						
 					}
@@ -87,6 +88,7 @@ public class TrickMain {
 							break;
 						}
 						candy += newHouse.outputCandy(player.getScary(),player.getCute());
+						newHouse.setHasBeenVisited(true);
 						time -= treatSpeed(houseTime, player.getSpeed());
 					}
 				}
