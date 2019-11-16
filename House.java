@@ -40,7 +40,7 @@ public class House {
 	
 	//Cute Value of House
 	private void setCute(int i) {
-		this.cute = cute;
+		this.cute = i;
 	}
 	public Integer getCute() {
 		return cute;	
@@ -48,7 +48,7 @@ public class House {
 	
 	//Scary Value of House
 	private void setScary(int i) {
-		this.scary = scary;
+		this.scary = i;
 	}
 	public Integer getScary() {
 		return scary;	
