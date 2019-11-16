@@ -50,4 +50,12 @@ public class Neighborhood {
 		
 		return walkTime;
 	}
+	public House nextHouse(){
+		for(int i = 0; i< currentHood.length; i++){
+			if(currentHood[i].getHasBeenVisited() == false){
+				return currentHood[i];
+			}
+		}
+		return null;
+	}
 }

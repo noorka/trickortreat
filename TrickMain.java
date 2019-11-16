@@ -29,6 +29,7 @@ public class TrickMain {
 		
 		//Add New Neighborhood
 		boolean goodChoice = false;
+		Neighborhood currentHood = null;
 		do{
 			System.out.println("What neighborhood do you want to visit?");
 			System.out.println("[1] My neighborhood\n[2] The fancier neighborhood\n[3] The fanciest neighborhood\n");
@@ -36,7 +37,7 @@ public class TrickMain {
 			int hoodChoice = s.nextInt();
 			if((hoodChoice < 4) && (hoodChoice > 0)){
 				
-				Neighborhood currentHood = new Neighborhood(hoodChoice);
+				currentHood = new Neighborhood(hoodChoice);
 				time -= currentHood.travelTime(hoodChoice);
 				
 				goodChoice = true;
@@ -70,14 +71,14 @@ public class TrickMain {
 					response = mainInput.nextInt();
 					
 					if(response == 1){
-						House newHouse = new House();
-						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
+						House newHouse = currentHood.nextHouse();
+						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore, newHouse);
 						time -= trickSpeed(houseTime, player.getSpeed());
 						
 					}
 					else if(response == 2){
-						House newHouse = new House();
-						candy += newHouse.outputCandy(player.getScary(),player.getCute());
+						House newHouse = currentHood.nextHouse();
+						candy += newHouse.outputCandy(player.getScary(),player.getCute(), newHouse);
 						time -= treatSpeed(houseTime, player.getSpeed());
 					}
 				}
