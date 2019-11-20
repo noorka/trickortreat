@@ -5,14 +5,12 @@ public class User {
 	private Integer cute;
 	private Integer scary;
 	private Integer costume;
-	private Integer movement;
 // CONSTRUCTOR
 	public User() {
 		this.setSpeed(8);
 		this.setCute(1);
 		this.setScary(1);
 		this.setCostume(0);
-		this.setMovement(5);
 	}
 	
 // SCARY
@@ -24,9 +22,6 @@ public class User {
 		return scary;
 		
 	}
-	public Integer addScary(int modifyer){
-		return scary+=modifyer;
-	}
 // CUTE
 	private void setCute(Integer cute) {
 		this.cute = cute;
@@ -35,9 +30,6 @@ public class User {
 	public Integer getCute() {
 		return cute;
 		
-	}
-	public Integer addCute(int modifyer){
-		return cute+=modifyer;
 	}
 
 // SPEED
@@ -48,22 +40,6 @@ public class User {
 	public Integer getSpeed() {
 		return speed;
 		
-	}
-	public Integer addSpeed(int modifyer){
-		return speed+=modifyer;
-	}
-
-	// MOVEOMENT
-	private void setMovement(Integer movement) {
-		this.movement = movement;
-		
-	}
-	public Integer getMovement() {
-		return movement;
-		
-	}
-	public Integer addMovement(int modifyer){
-		return movement+=modifyer;
 	}
 	
 // COSTUME
@@ -77,6 +53,11 @@ public class User {
 		return costume;
 		
 	}
+	/*public String toString(){
+		String costumeType = "Princess";
+		return costumeType;
+	}
+	*/
 	
 	// Get Costume Method
 		public void costumeBox() {
@@ -107,35 +88,25 @@ public class User {
 			}
 		}
 		public static int[][] getCostumeValues(){
-			//[0] = Speed
-			//[1] = Cuteness
-			//[2] = Scariness
-			//[3] = Movement
-			
-			int defaultAttributes []= new int[4];
+			int defaultAttributes []= new int[3];
 			defaultAttributes[0]=8;
 			defaultAttributes[1]=1;
 			defaultAttributes[2]=1;
-			defaultAttributes[3]=5;
 
-			int princessAttributes []= new int[4];
+			int princessAttributes []= new int[3];
 			princessAttributes[0]=3;
 			princessAttributes[1]=8;
 			princessAttributes[2]=1;
-			princessAttributes[3]=3;
 
-
-			int vampireAttributes []= new int[4];
+			int vampireAttributes []= new int[3];
 			vampireAttributes[0]=2;
 			vampireAttributes[1]=1;
 			vampireAttributes[2]=7;
-			vampireAttributes[3]=4;
 
-			int superheroAttributes []= new int[4];
+			int superheroAttributes []= new int[3];
 			superheroAttributes[0]=6;
 			superheroAttributes[1]=1;
 			superheroAttributes[2]=1;
-			superheroAttributes[3]=6;
 
 			int[][] twoD_arr = {defaultAttributes, princessAttributes, vampireAttributes, superheroAttributes};
 			return twoD_arr;
