@@ -13,14 +13,11 @@ public class House {
 	
 	public House() {
 		Random rand1 = new Random();
-		//Random rand2 = new Random();
-		//Random rand3 = new Random(); 
+		Random rand2 = new Random();
+		Random rand3 = new Random(); 
 		
-		//this.setCute(rand1.nextInt(11));
-		//this.setScary(rand1.nextInt(11));
-		//this.setTrick(rand1.nextInt(11));
-		this.setCute(5);
-		this.setScary(5);
+		this.setCute(rand3.nextInt(11));
+		this.setScary(rand2.nextInt(11));
 		this.setTrick(rand1.nextInt(11));
 		
 		this.setHasBeenVisited(false);
@@ -31,8 +28,8 @@ public class House {
 		Random rand2 = new Random();
 		Random rand3 = new Random(); 
 		
-		this.setCute(5);
-		this.setScary(5);
+		this.setCute(rand3.nextInt(11));
+		this.setScary(rand2.nextInt(11));
 		this.setTrick(rand1.nextInt(11));
 		this.setHasBeenVisited(false);
 		this.fancyCandy = neighborhoodFanciness;
@@ -40,7 +37,7 @@ public class House {
 	
 	//Cute Value of House
 	private void setCute(int i) {
-		this.cute = cute;
+		this.cute = i;
 	}
 	public Integer getCute() {
 		return cute;	
@@ -48,7 +45,7 @@ public class House {
 	
 	//Scary Value of House
 	private void setScary(int i) {
-		this.scary = scary;
+		this.scary = i;
 	}
 	public Integer getScary() {
 		return scary;	
