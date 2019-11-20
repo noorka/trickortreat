@@ -21,15 +21,10 @@ public class Neighborhood {
 		else{
 			number = rand1.nextInt(60-30) + 30;
 		}
-
 		//ArrayList thisHood = new ArrayList(number);
 		House[] myHouses = new House[number];
-
 		for(int i = 0; i < number; i++){
-			
 			House newHouse = new House(fancy);
-			System.out.println(newHouse);
-
 			myHouses[i]= newHouse;
 		}
 

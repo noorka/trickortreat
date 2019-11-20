@@ -93,7 +93,6 @@ public class TrickMain {
 					}
 				}
 			}
-			
 			else if(response == 2) {
 				if(time <= 0){
 					break;
