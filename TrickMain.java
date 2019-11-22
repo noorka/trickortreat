@@ -3,13 +3,45 @@
 //as well as tells them how much candy they have
 //If next house, randomized next house, with candy
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
+		String fileName = "treatHighScores.txt";
+		Scanner scoreScn = null;
+		String[][] highestTreat;
+		String[][] highestTrick;
 		User player = new User();
-			
+
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no treat high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
+		highestTreat = processHighScore(scoreScn);
+		fileName = "trickHighScores.txt";
+		
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no trick high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
+		
+		highestTrick = processHighScore(scoreScn);
+		
+		      
+		
+		//************************************
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 
@@ -133,7 +165,25 @@ public class TrickMain {
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
 		}
 
-	//MAIN METHODS
+	//MAIN METHODS ******************************************************************************************************
+	
+	public static String[][] processHighScore(Scanner sc){
+		String[][] myArry;
+		String lineInput;
+		int i = 0;
+		//Integer num = 0;
+		lineInput = sc.nextLine();
+		
+		while(sc.hasNext()){
+			String[] lineData;
+			lineData = lineInput.split("[,]");
+			myArry[i] = lineData[0];
+			myArry[i][0] = lineData[1];
+			//num= Integer.valueOf(lineData[2].trim());
+			i++;
+		}
+		return myArry;
+	}
 
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
