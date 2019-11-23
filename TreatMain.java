@@ -3,33 +3,94 @@
 //as well as tells them how much candy they have
 //If next house, randomized next house, with candy
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
-public class TreatMain {
+public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
+		String fileName = "treatHighScores.txt";
+		Scanner scoreScn = null;
+		String[][] highestTreat;
+		String[][] highestTrick;
 		User player = new User();
+
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no treat high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
+		highestTreat = processHighScore(scoreScn);
+		fileName = "trickHighScores.txt";
 		
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no trick high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
 		
+		highestTrick = processHighScore(scoreScn);
+		
+		      
+		
+		//************************************
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
+
+		//Maybe dulplicate code in House
 		Random randTime = new Random ();
 		printAdjust();
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
 		System.out.println("It is 8:30 pm, you should put on your costume.");
+		//Player chooses a costume out of three options
 		player.costumeBox();
+
+		//How long it takes to put on each costume
 		int changeTime = costumeChangeTime(player.getCostume());
 		time-= changeTime;
-
 		
+		//Add New Neighborhood
+		boolean goodChoice = false;
+		Neighborhood currentHood = new Neighborhood(1);
+		do{
+			System.out.println("What neighborhood do you want to visit?");
+			System.out.println("[1] My neighborhood\n[2] The fancier neighborhood\n[3] The fanciest neighborhood\n");
+			Scanner s = new Scanner(System.in);
+			int hoodChoice = s.nextInt();
+			if((hoodChoice < 4) && (hoodChoice > 0)){
+				
+				currentHood = new Neighborhood(hoodChoice);
+				time -= currentHood.travelTime(hoodChoice);
+				
+				goodChoice = true;
+				
+			}
+			else{
+				goodChoice = false;
+			}
+		}
+		while(goodChoice = false);
+		
+		
+		//Trick or Treat Loop
 		while(time != 0) {
 			System.out.println("\nWhat would you like to do next?");
 			System.out.println("[1] Go to next house\n[2] Check candy levels\n[3] Check trickster score\n[4] Check time\n[5] Go home.");
 			response = mainInput.nextInt();
+
+			//How long it takes to travel to the next house
 			int houseTime = randTime.nextInt(9) + 1;
-			
+			//Check if there is enough time left to perform action
 			time = timeCheckAction(houseTime,time);
 			
 			if(response == 1) {
@@ -42,14 +103,24 @@ public class TreatMain {
 					response = mainInput.nextInt();
 					
 					if(response == 1){
-						House newHouse = new House();
+						House newHouse = currentHood.nextHouse();
+						if(newHouse == null){
+							System.out.println("There are no more houses in this neighborhood.");
+							break;
+						}
 						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
+						newHouse.setHasBeenVisited(true);
 						time -= trickSpeed(houseTime, player.getSpeed());
 						
 					}
 					else if(response == 2){
-						House newHouse = new House();
+						House newHouse = currentHood.nextHouse();
+						if(newHouse == null){
+							System.out.println("There are no more houses in this neighborhood.");
+							break;
+						}
 						candy += newHouse.outputCandy(player.getScary(),player.getCute());
+						newHouse.setHasBeenVisited(true);
 						time -= treatSpeed(houseTime, player.getSpeed());
 					}
 				}
@@ -92,10 +163,28 @@ public class TreatMain {
 			}
 		}
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
-		mainInput.close();
+		}
+
+	//MAIN METHODS ******************************************************************************************************
+	
+	public static String[][] processHighScore(Scanner sc){
+		String[][] myArry;
+		String lineInput;
+		int i = 0;
+		//Integer num = 0;
+		lineInput = sc.nextLine();
+		
+		while(sc.hasNext()){
+			String[] lineData;
+			lineData = lineInput.split("[,]");
+			myArry[i] = lineData[0];
+			myArry[i][0] = lineData[1];
+			//num= Integer.valueOf(lineData[2].trim());
+			i++;
+		}
+		return myArry;
 	}
 
-	//MAIN METHODS
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
 		if(costumeChoice == 0){ // no costume
