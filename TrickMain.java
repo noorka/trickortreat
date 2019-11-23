@@ -17,28 +17,28 @@ public class TrickMain {
 		String[][] highestTrick;
 		User player = new User();
 
-		// try{
-		// 	scoreScn = new Scanner (new File(fileName));
-		// }catch(FileNotFoundException fnf){
-		// 	System.err.println("File not found.");
-		// 	System.out.println("There are no treat high scores!");
-		// 	scoreScn.close();
-		// 	System.exit(1);
-		// }
-		// System.out.println(highestTreat = processHighScore(scoreScn));
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no treat high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
+		System.out.println(highestTreat = processHighScore(scoreScn));
 
-		// fileName = "trickHighScores.txt";
+		fileName = "trickHighScores.txt";
 		
-		// try{
-		// 	scoreScn = new Scanner (new File(fileName));
-		// }catch(FileNotFoundException fnf){
-		// 	System.err.println("File not found.");
-		// 	System.out.println("There are no trick high scores!");
-		// 	scoreScn.close();
-		// 	System.exit(1);
-		// }
+		try{
+			scoreScn = new Scanner (new File(fileName));
+		}catch(FileNotFoundException fnf){
+			System.err.println("File not found.");
+			System.out.println("There are no trick high scores!");
+			scoreScn.close();
+			System.exit(1);
+		}
 		
-		// System.out.println(highestTrick = processHighScore(scoreScn));
+		System.out.println(highestTrick = processHighScore(scoreScn));
 		
 		      
 		
@@ -168,23 +168,23 @@ public class TrickMain {
 
 	//MAIN METHODS ******************************************************************************************************
 	
-	// public static String[][] processHighScore(Scanner sc){
-	// 	String[][] myArry;
-	// 	String lineInput;
-	// 	int i = 0;
-	// 	//Integer num = 0;
-	// 	lineInput = sc.nextLine();
+	public static String[][] processHighScore(Scanner sc){
+		String[][] myArry;
+		String lineInput;
+		int i = 0;
+		//Integer num = 0;
+		lineInput = sc.nextLine();
 		
-	// 	while(sc.hasNext()){
-	// 		String[] lineData;
-	// 		lineData = lineInput.split("[,]");
-	// 		myArry[i] = lineData[0];
-	// 		myArry[i][0] = lineData[1];
-	// 		//num= Integer.valueOf(lineData[2].trim());
-	// 		i++;
-	// 	}
-	// 	return myArry;
-	// }
+		while(sc.hasNext()){
+			String[] lineData;
+			lineData = lineInput.split("[,]");
+			myArry[i] = lineData[0];
+			myArry[i][0] = lineData[1];
+			//num= Integer.valueOf(lineData[2].trim());
+			i++;
+		}
+		return myArry;
+	}
 
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
