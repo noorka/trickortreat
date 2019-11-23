@@ -7,11 +7,9 @@ public class House {
 	private Integer trick;
 	private boolean hasBeenVisited;
 	private Integer fancyCandy;
-
-	// We don't need a constructor with parameters any more,
-	// Since the random house is made inside the method here
 	
 	public House() {
+		//Generates a house with random values
 		Random rand1 = new Random();
 		Random rand2 = new Random();
 		Random rand3 = new Random(); 
@@ -24,6 +22,7 @@ public class House {
 		this.fancyCandy = 0;
 	}
 	public House (int neighborhoodFanciness){
+		//Set a house with a specific neighborhood fanciness
 		Random rand1 = new Random();
 		Random rand2 = new Random();
 		Random rand3 = new Random(); 
@@ -54,6 +53,7 @@ public class House {
 		fancyCandy = fanciness;
 	}
 
+	//User attempts to pull a prank on a house
 	public Integer trickAttempt(Integer userSpeed, Integer userTrick){
 		int trickScore = 0, trickLevel = 0, trickFactor = 0;
 		trickLevel = this.getTrick();
@@ -78,6 +78,8 @@ public class House {
 		
 		return trickScore; 
 	}
+
+	//Checks user values against house, gives proper amount of candy
 	public Integer outputCandy(Integer userScary, Integer userCute){
 		int candy = 0;
 		int thisCute = this.getCute();

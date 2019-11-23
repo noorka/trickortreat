@@ -7,6 +7,7 @@ public class User {
 	private Integer costume;
 // CONSTRUCTOR
 	public User() {
+		//Setting default for user without a costume
 		this.setSpeed(8);
 		this.setCute(1);
 		this.setScary(1);
@@ -53,11 +54,6 @@ public class User {
 		return costume;
 		
 	}
-	/*public String toString(){
-		String costumeType = "Princess";
-		return costumeType;
-	}
-	*/
 	
 	// Get Costume Method
 		public void costumeBox() {
@@ -87,22 +83,25 @@ public class User {
 				System.out.println("Going as yourself I see.");
 			}
 		}
+
+		//List of Costumes
 		public static int[][] getCostumeValues(){
+			//No Costume
 			int defaultAttributes []= new int[3];
 			defaultAttributes[0]=8;
 			defaultAttributes[1]=1;
 			defaultAttributes[2]=1;
-
+			//Princess
 			int princessAttributes []= new int[3];
 			princessAttributes[0]=3;
 			princessAttributes[1]=8;
 			princessAttributes[2]=1;
-
+			//Vampire
 			int vampireAttributes []= new int[3];
 			vampireAttributes[0]=2;
 			vampireAttributes[1]=1;
 			vampireAttributes[2]=7;
-
+			//Superhero
 			int superheroAttributes []= new int[3];
 			superheroAttributes[0]=6;
 			superheroAttributes[1]=1;
