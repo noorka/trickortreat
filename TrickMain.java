@@ -5,32 +5,34 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.*;
 
 public class TrickMain {
 	public static void main(String[] args) {
 		Scanner mainInput = new Scanner(System.in);
-		String fileName = "treatHighScores.txt";
+		String fileTreat = "treatHighScore.txt";
 		Scanner scoreScn = null;
-		String[][] highestTreat;
-		String[][] highestTrick;
+		ArrayList<Score> highestTreat;
+		ArrayList<Score> highestTrick;
 		User player = new User();
 
 		try{
-			scoreScn = new Scanner (new File(fileName));
+			scoreScn = new Scanner (new File(fileTreat));
 		}catch(FileNotFoundException fnf){
 			System.err.println("File not found.");
 			System.out.println("There are no treat high scores!");
 			scoreScn.close();
 			System.exit(1);
 		}
-		System.out.println(highestTreat = processHighScore(scoreScn));
-
-		fileName = "trickHighScores.txt";
+		highestTreat = processHighScore(scoreScn);
+		scoreScn.close();
+		
+		String fileTrick = "trickHighScore.txt";
 		
 		try{
-			scoreScn = new Scanner (new File(fileName));
+			scoreScn = new Scanner (new File(fileTrick));
 		}catch(FileNotFoundException fnf){
 			System.err.println("File not found.");
 			System.out.println("There are no trick high scores!");
@@ -38,20 +40,21 @@ public class TrickMain {
 			System.exit(1);
 		}
 		
-		System.out.println(highestTrick = processHighScore(scoreScn));
-		
-		      
+		highestTrick = processHighScore(scoreScn);
+		scoreScn.close();		
 		
 		//************************************
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
+		String playerName;
 
-		//Maybe dulplicate code in House
+		//Maybe duplicate code in House
 		Random randTime = new Random ();
 		printAdjust();
 		printTitle();
 
 		System.out.println("Welcome to Hallowe'en Night, spooky girls and boys of all ages!");
+		playerName = askName();
 		System.out.println("It is 8:30 pm, you should put on your costume.");
 		//Player chooses a costume out of three options
 		player.costumeBox();
@@ -163,26 +166,77 @@ public class TrickMain {
 				break;
 			}
 		}
+		
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
+		scoreCheck(highestTreat, candy, playerName);
+		scoreCheck(highestTrick, trickScore, playerName);
+		System.out.println("TREAT HIGH SCORES:");
+		outputHighScore(printScores(highestTreat), fileTreat);
+		System.out.println("TRICK HIGH SCORES:");
+		outputHighScore(printScores(highestTrick), fileTrick);
 		}
 
 	//MAIN METHODS ******************************************************************************************************
 	
-	public static String[][] processHighScore(Scanner sc){
-		String[][] myArry;
+	public static String askName(){
+		Scanner key = new Scanner(System.in);
+		String playerName;
+		boolean goodNm = false;
+		do{
+		System.out.println("Please enter three characters for the high-score board.");
+		playerName = key.next().toUpperCase();
+		if((playerName.length() > 1) && (playerName.length() <= 3)){
+			goodNm = true;
+		}
+		else if(playerName.length() < 1){
+			System.out.println("This is too short. Try again.");
+		}
+		else{
+			System.out.println("This is too long. Try again.");
+		}
+		}while(goodNm == false);
+		
+		return playerName;
+	}
+	public static void scoreCheck(ArrayList<Score> thisArry, int score, String playerName){
+		Score newScore = new Score(playerName,score);
+		thisArry.add(newScore);
+		Collections.sort(thisArry);
+		for(int i = 9; i < thisArry.size(); i++){
+			thisArry.remove(i);
+		}
+	}
+	public static String printScores(ArrayList<Score> thisArry){
+		String finalScores = "";
+		for(int i = 0; i < thisArry.size(); i++){
+			finalScores += thisArry.get(i).toString();
+		}
+		System.out.print(finalScores);
+		return finalScores;
+	}
+	public static void outputHighScore(String output, String fileName){
+		try {
+			PrintWriter pw = new PrintWriter(new FileOutputStream(fileName, false));
+			pw.append(output);
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.err.println("Cannot save high scores.");
+		}
+		
+	}
+	public static ArrayList<Score> processHighScore(Scanner sc){
+		ArrayList<Score> myArry = new ArrayList<Score>();
 		String lineInput;
 		int i = 0;
-		//Integer num = 0;
-		lineInput = sc.nextLine();
-		
-		while(sc.hasNext()){
-			String[] lineData;
-			lineData = lineInput.split("[,]");
-			myArry[i] = lineData[0];
-			myArry[i][0] = lineData[1];
-			//num= Integer.valueOf(lineData[2].trim());
+		do{
+			Integer num = 0;
+			lineInput = sc.nextLine();
+			String[] lineData = lineInput.split(",");
+			num= Integer.valueOf(lineData[1].trim());
+			Score thisScore = new Score(lineData[0], num);
+			myArry.add(thisScore);
 			i++;
-		}
+		}while(sc.hasNext());
 		return myArry;
 	}
 
