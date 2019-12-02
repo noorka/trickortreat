@@ -4,8 +4,8 @@
  * It contains variables for initials and the score value.
  * The constructor takes in a String and an int to construct the Score
  * Because this class implements comparable we have to override the compareTo method so it knows what two 
- * variables to use in the sort method.
- * There is a greater than, less than, and equals override too so that the comparison is of the value only
+ * variables to use in the sort method. We used this resource to help us implement this: https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
+ * There is a greater than, less than, and equals override too so that the comparison is of the value only.
  */
 public class Score implements Comparable {
 private String initials;
