@@ -1,3 +1,12 @@
+/*PSEUDO CODE
+ * This class is for the high scores. It implements comparable so we can run a sort on the Array list
+ * 
+ * It contains variables for initials and the score value.
+ * The constructor takes in a String and an int to construct the Score
+ * Because this class implements comparable we have to override the compareTo method so it knows what two 
+ * variables to use in the sort method.
+ * There is a greater than, less than, and equals override too so that the comparison is of the value only
+ */
 public class Score implements Comparable {
 private String initials;
 private int value;

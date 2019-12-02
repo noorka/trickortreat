@@ -1,7 +1,28 @@
-//User chooses costume
-//Program asks if they want to go to next house or go home (y/n), 
-//as well as tells them how much candy they have
-//If next house, randomized next house, with candy
+/* PSEUDO CODE
+ * This is for the overall game play, some of the functions mentioned exist inside other classes
+ * 
+ * File IO for the high score boards for tricking and treating is set up and scores are processed
+ * into ArrayLists
+ * User adjust screen for graphics. 
+ * The base user, candy, trick score, response, and time (150 minutes) are set.
+ * User enters a three character name for the leaderboard
+ * User selects a costume
+ * 	-their costume selection impacts the amount of time they have eg a more complicated costume (princess)
+ * 	takes more time to put on.
+ * User selects a neighborhood
+ * 	-the fancier the neighborhood the longer it takes to get their, but the more candy you could get and the 
+ * 	more houses there are to interact with
+ * User selects one of five options: next house, check candy, check trickster score, check time, or go home
+ * 	- next house lets user pick between tricking or treating and an appropriate adjustment is made to
+ * 	their scores depending upon what random amount of candy/trick success they get.
+ * 	- check candy allows user to check how much candy they currently have in their back. minimally impacts time
+ * 	- check trickster score allows user to check how successful of a trickster they are. minimally impacts time
+ * 	- check time allows user to see how much time they have left, does not impact time
+ * 	- go home ends the game early
+ * If a user selects to go home, runs out of time, or runs out of houses their ending candy and trickster
+ * values are printed. Their scores may be added to the leaderboard if they qualify
+ * Leaderboard values overwrite the input file with the new values.
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,8 +68,7 @@ public class TrickMain {
 		int candy = 0, response = 0, trickScore = 0;
 		int time = 150;
 		String playerName;
-
-		//Maybe duplicate code in House
+		
 		Random randTime = new Random ();
 		printAdjust();
 		printTitle();
@@ -168,8 +188,10 @@ public class TrickMain {
 		}
 		
 		System.out.println("You end your night with "+candy+" candies and a trickster score of " +trickScore + ".");
+		// checking if the score belongs in the high scores and adding them
 		scoreCheck(highestTreat, candy, playerName);
 		scoreCheck(highestTrick, trickScore, playerName);
+		// printing the high scores and outputting them to the file
 		System.out.println("TREAT HIGH SCORES:");
 		outputHighScore(printScores(highestTreat), fileTreat);
 		System.out.println("TRICK HIGH SCORES:");
@@ -178,6 +200,7 @@ public class TrickMain {
 
 	//MAIN METHODS ******************************************************************************************************
 	
+	// Asks user to create a three character name, checks for only three characters.
 	public static String askName(){
 		Scanner key = new Scanner(System.in);
 		String playerName;
@@ -198,6 +221,8 @@ public class TrickMain {
 		
 		return playerName;
 	}
+	
+	//creates a new score, adds it to the arraylist, removes any scores that go beyond the top 10
 	public static void scoreCheck(ArrayList<Score> thisArry, int score, String playerName){
 		Score newScore = new Score(playerName,score);
 		thisArry.add(newScore);
@@ -206,6 +231,7 @@ public class TrickMain {
 			thisArry.remove(i);
 		}
 	}
+	// formats the scores for printing and for file output
 	public static String printScores(ArrayList<Score> thisArry){
 		String finalScores = "";
 		for(int i = 0; i < thisArry.size(); i++){
@@ -214,6 +240,7 @@ public class TrickMain {
 		System.out.print(finalScores);
 		return finalScores;
 	}
+	// overwrites the initial files with the new high score data
 	public static void outputHighScore(String output, String fileName){
 		try {
 			PrintWriter pw = new PrintWriter(new FileOutputStream(fileName, false));
@@ -224,6 +251,7 @@ public class TrickMain {
 		}
 		
 	}
+	// takes formatted data out of the file, creates a new Score, puts all the scores into an arraylist
 	public static ArrayList<Score> processHighScore(Scanner sc){
 		ArrayList<Score> myArry = new ArrayList<Score>();
 		String lineInput;
@@ -239,7 +267,7 @@ public class TrickMain {
 		}while(sc.hasNext());
 		return myArry;
 	}
-
+// how much time it takes a user to change into their costume depending upon their choice
 	public static int costumeChangeTime(int costumeChoice){
 		int changeTime = 0;
 		if(costumeChoice == 0){ // no costume
@@ -256,7 +284,8 @@ public class TrickMain {
 		}
 		return changeTime;
 	}
-	
+	// checks if the user has enough time to complete a certain action and returns 0 if there is not 
+	// enough time to complete it.
 	public static int timeCheckAction(int actionTime, int timeLeft){
 		if(actionTime > timeLeft){
 			System.out.println("You don't have enough time! Go home!");
@@ -265,6 +294,7 @@ public class TrickMain {
 		}
 		return timeLeft;
 	}
+	// formatting the time left into hours and minutes
 	public static void timeCheck(int timeLeft){
 		int minLeft = 0;
 		if(timeLeft > 120){
@@ -279,6 +309,7 @@ public class TrickMain {
 			System.out.println("You have "+ timeLeft+" min left to trick or treat!");
 		}
 	}
+	// how quickly a user can get candy depending upon their costume choice's speed. 
 	public static int treatSpeed(int houseTime, int costumeSpeed){
 		int treatTime = 0;
 		
@@ -305,6 +336,7 @@ public class TrickMain {
 		
 		return treatTime;
 	}
+	// how quickly a user can trick a house depending upon their costume choice's speed. 
 	public static int trickSpeed(int houseTime, int costumeSpeed){
 		int treatTime = 0;
 		
@@ -331,6 +363,7 @@ public class TrickMain {
 		
 		return treatTime;
 	}
+	// printing out the adjustment screen so the user can view the graphics 
 	public static void printAdjust(){
 		while(true){
 			System.out.println("***************************************************************************************************************************");
@@ -375,6 +408,7 @@ public class TrickMain {
 			
 		}
 	}
+	// printing out the game title screen
 	public static void printTitle(){
 		System.out.println("***************************************************************************************************************************");
 		System.out.println("*                                                                                                                         *");
