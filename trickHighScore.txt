@@ -2,3 +2,5 @@ EMH, 50
 JTK, 49
 LOL, 45
 WTF, 43
+WWW, 8
+JJJ, -4

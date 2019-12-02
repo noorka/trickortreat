@@ -2,3 +2,5 @@ AMK, 50
 JHK, 44
 CVS, 43
 MMM, 40
+JJJ, 3
+WWW, 0
