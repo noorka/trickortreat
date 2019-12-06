@@ -33,6 +33,10 @@ public class Neighborhood {
 		this.numberOfHouses = number;
 	}
 	
+	public int getFanciness(){
+		return fanciness;
+	}
+
 	public void beenToHouse(int houseNum){
 		currentHood[houseNum].setHasBeenVisited(true);
 	}

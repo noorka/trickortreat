@@ -2,3 +2,8 @@ AMK, 50
 JHK, 44
 CVS, 43
 MMM, 40
+EBH, 9
+THX, 0
+ECT, 0
+KUN, 0
+ERA, 0

@@ -29,7 +29,15 @@ public class House {
 		
 		this.setCute(rand3.nextInt(11));
 		this.setScary(rand2.nextInt(11));
-		this.setTrick(rand1.nextInt(11));
+		if(neighborhoodFanciness==1){
+			this.setTrick(rand1.nextInt(11));
+		}
+		if(neighborhoodFanciness==2){
+			this.setTrick(rand1.nextInt(8));
+		}
+		if(neighborhoodFanciness==3){
+			this.setTrick(rand1.nextInt(6));
+		}
 		this.setHasBeenVisited(false);
 		this.fancyCandy = neighborhoodFanciness;
 	}
@@ -54,20 +62,38 @@ public class House {
 	}
 
 	//User attempts to pull a prank on a house
-	public Integer trickAttempt(Integer userSpeed, Integer userTrick){
+	public Integer trickAttempt(Integer userSpeed, Integer userTrick, Integer hoodChoice){
 		int trickScore = 0, trickLevel = 0, trickFactor = 0;
 		trickLevel = this.getTrick();
 		
-		trickFactor = (userSpeed + userTrick) * 2;
+		trickFactor = (userSpeed + userTrick);
 		
 		
 		if(trickFactor > trickLevel){
 			System.out.println("Trick success!");
-			trickScore = 1;
+			//Your neighborhood has a less chance of success
+			if(hoodChoice==1){
+				trickScore = 3;
+			}
+			if(hoodChoice==2){
+				trickScore = 2;
+			}
+			if(hoodChoice==3){
+				trickScore = 1;
+			}
 		}
 		else if(trickFactor < trickLevel){
 			System.out.println("Trick fail.");
-			trickScore = -1;
+			if(hoodChoice==1){
+				trickScore = -1;
+			}
+			if(hoodChoice==2){
+				trickScore = -2;
+			}
+			if(hoodChoice==3){
+				trickScore = -3;
+			}
+			
 			
 		}
 		else{

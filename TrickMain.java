@@ -112,7 +112,7 @@ public class TrickMain {
 							System.out.println("There are no more houses in this neighborhood.");
 							break;
 						}
-						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore);
+						trickScore += newHouse.trickAttempt(player.getSpeed(), trickScore, currentHood.getFanciness());
 						newHouse.setHasBeenVisited(true);
 						time -= trickSpeed(houseTime, player.getSpeed());
 						
