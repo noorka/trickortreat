@@ -2,8 +2,13 @@ EMH, 50
 JTK, 49
 LOL, 45
 WTF, 43
+<<<<<<< HEAD
 THX, 14
 ECT, 14
 EWE, 14
 WEE, 13
 BES, 13
+=======
+WWW, 8
+JJJ, -4
+>>>>>>> f90616006c282eef50d2f62dbfd025def095000d

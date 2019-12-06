@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 AMK, 50
 JHK, 44
 CVS, 43
@@ -7,3 +8,14 @@ THX, 0
 ECT, 0
 KUN, 0
 ERA, 0
+=======
+AMK, 89
+MFK, 70
+JHK, 67
+CVS, 50
+QWE, 45
+MNM, 42
+EIO, 29
+JJJ, 13
+AAA, 10
+>>>>>>> f90616006c282eef50d2f62dbfd025def095000d
